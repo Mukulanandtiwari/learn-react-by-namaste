@@ -1,0 +1,111 @@
+/* Header container styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+/* Logo container styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo image styling */
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+/* Navigation items styling */
+.nav-items ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Individual navigation item styling */
+.nav-items li {
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect on navigation items */
+.nav-items li:hover {
+    color: #f9a825; /* Change to a bright yellow on hover */
+}
+
+/******************************************/
+
+/* Body container styling */
+.body {
+    padding: 20px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Search box styling */
+.search {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    text-align: justify;
+}
+
+/* Restaurant container styling */
+.res-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Individual restaurant card styling */
+.res-card {
+    width: 250px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* Image styling for the restaurant card */
+.res-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+/* Restaurant card text styling */
+.res-card h3 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.res-card h4 {
+    font-size: 18px;
+    color: #555;
+    margin: 5px 0;
+}
+
+/* Hover effect on restaurant cards */
+.res-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
