@@ -16,13 +16,12 @@
  
 
 1. We create App.js in that we create Header and Body.
+
 2. then we create RestaurantCard component as "props" structure for body component.
-3. then create src folder
 
+3. then create src folder, in that we create two folder:
+- components
+- utils
+and arrange components as per file to folder.
 
-git init
-git add .
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/Mukulanandtiwari/learn-react-by-namaste.git
-git push -u origin main
+4. we create HOOK (useState) inside Body.js to filter and re-render UI.
