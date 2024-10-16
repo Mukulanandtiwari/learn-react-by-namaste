@@ -25,3 +25,5 @@
 and arrange components as per file to folder.
 
 4. we create HOOK (useState) inside Body.js to filter and re-render UI.
+
+5. useEffect
