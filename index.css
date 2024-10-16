@@ -1,10 +1,30 @@
+/******************************************/
+/* Global styles for modern, clean look */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h3, h4 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/******************************************/
 /* Header container styling */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
+    background-color: #282c3f; /* Dark background */
+    padding: 15px 30px;
 }
 
 /* Logo container styling */
@@ -15,15 +35,15 @@
 
 /* Logo image styling */
 .logo {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: auto;
 }
 
 /* Navigation items styling */
 .nav-items ul {
     list-style-type: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
     margin: 0;
     padding: 0;
 }
@@ -32,21 +52,21 @@
 .nav-items li {
     color: white;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 500;
     transition: color 0.3s ease;
 }
 
 /* Hover effect on navigation items */
 .nav-items li:hover {
-    color: #f9a825; /* Bright yellow on hover */
+    color: #f16522; /* Swiggy's orange color on hover */
 }
 
 /******************************************/
-
 /* Body container styling */
 .body {
-    padding: 20px;
-    background-color: #f9f9f9;
+    padding: 30px;
+    background-color: #fafafa;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,11 +81,36 @@
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-size: 18px;
-    text-align: center;
-    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
 }
 
+.search-box {
+    width: 80%;
+    border: none;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.search-btn {
+    background-color: #f16522;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect on search button */
+.search-btn:hover {
+    background-color: #e4561b;
+}
+
+/******************************************/
 /* Filter button container styling */
 .filter {
     margin-bottom: 20px;
@@ -73,7 +118,7 @@
 
 /* Filter button styling */
 .filter-btn {
-    background-color: #ff6347; /* Tomato color */
+    background-color: #00796b; /* Swiggy-like teal color */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -85,11 +130,10 @@
 
 /* Hover effect for the filter button */
 .filter-btn:hover {
-    background-color: #ff4500; /* Darker tomato color */
+    background-color: #00695c;
 }
 
 /******************************************/
-
 /* Restaurant container styling */
 .res-container {
     display: flex;
@@ -101,81 +145,71 @@
 /* Individual restaurant card styling */
 .res-card {
     width: 250px;
-    padding: 20px;
+    padding: 15px;
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Hover effect on restaurant cards */
 .res-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 /* Image styling for the restaurant card */
-.res-card img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 15px;
-    border-radius: 50%;
+.res-logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 10px;
     object-fit: cover;
 }
 
 /* Restaurant card text styling */
 .res-card h3 {
-    font-size: 22px;
+    font-size: 20px;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .res-card h4 {
-    font-size: 18px;
+    font-size: 16px;
     color: #555;
-    margin: 5px 0;
+    margin: 4px 0;
 }
 
-.res-card p {
-    font-size: 14px;
-    color: #777;
+/* Styling for cost and rating */
+.res-card .cost {
+    font-weight: bold;
+    color: #f16522; /* Swiggy-like color */
 }
 
+.res-card .rating {
+    color: #ffc107; /* Golden stars color */
+}
 
-/************************/
-
+/******************************************/
 /* Button styling */
 .login {
     background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
-    padding: 10px 20px; /* Padding for the button */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 16px; /* Font size */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover and click effects */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 /* Hover effect */
 .login:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049;
 }
 
-/* Active state when clicked */
-.login:active {
-    transform: scale(0.98); /* Slightly shrink the button on click */
-    background-color: #3e8e41; /* Even darker green on click */
-}
-
-/* Focus state */
-.login:focus {
-    outline: none; /* Remove the default focus outline */
-    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5); /* Add a custom focus outline */
-}
-
-/**********************************/
-
+/******************************************/
 /* Shimmer effect container */
 .shimmer-container {
     display: flex;
@@ -185,10 +219,10 @@
 
 /* Shimmer card */
 .shimmer-card {
-    width: 300px;
+    width: 250px;
     height: 200px;
     background-color: #f0f0f0;
-    border-radius: 10px;
+    border-radius: 12px;
     position: relative;
     overflow: hidden;
 }
