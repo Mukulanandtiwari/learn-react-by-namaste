@@ -26,4 +26,16 @@ and arrange components as per file to folder.
 
 4. we create HOOK (useState) inside Body.js to filter and re-render UI.
 
-5. useEffect
+5. useEffect (work to fetch the api): it takes callback function & second optional dependency.
+
+6. react-router-dom:
+  - createBrowserRouter: Browser-based routing setup karta hai.
+  - RouterProvider: Routing ko puri app mein inject karta hai.
+  - Outlet: Nested routes ke liye placeholder provide karta hai.
+
+7. 2 types Routing in web apps
+ - Client Side Routing
+ - Server Side Routing
+
+8. useParams: agar aap ek dynamic route banate ho, jisme kuch IDs ya slugs URL ka part hoti hain (e.g., /user/:id), toh useParams se aap directly URL mein diye gaye id ko access kar sakte ho.
+
