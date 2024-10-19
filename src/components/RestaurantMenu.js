@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 import { MENU_API } from "../utils/constants";
 
 const RestaurantMenu = () => {
-    const [resInfo, setresInfo] = useState(null);
-
+    const [resInfo, setResInfo] = useState(null);
     const { resId } = useParams();
 
     useEffect(() => {
@@ -15,31 +14,40 @@ const RestaurantMenu = () => {
     const fetchMenu = async () => {
         const data = await fetch(MENU_API + resId);
         const json = await data.json();
-        setresInfo(json?.data);
+        console.log(json);  // Log the entire response to inspect its structure
+        setResInfo(json?.data);
     };
 
     if (resInfo === null) {
         return <Shimmer />;
     }
 
-    const { name, cuisines, costForTwoMessage } = resInfo?.cards[2]?.card?.card?.info;
+    // Safely extract restaurant info with optional chaining
+    const { name, cuisines, costForTwoMessage } = resInfo?.cards?.[2]?.card?.card?.info || {};
 
-    // Optional chaining with fallback to an empty array if itemCards doesn't exist
-    const { itemCards } = resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-    console.log(itemCards)
+    // Safely access itemCards with optional chaining and fallback to an empty array if undefined
+    const itemCards = resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card?.card?.itemCards || [];
+
+    // If itemCards is still undefined or empty, handle that case
+    if (itemCards.length === 0) {
+        return (
+            <div className="menu">
+                <h1>{name}</h1>
+                <p>{cuisines?.join(", ")} - {costForTwoMessage}</p>
+                <h2>No menu items available</h2>
+            </div>
+        );
+    }
 
     return (
         <div className="menu">
             <h1>{name}</h1>
-            <p>
-                {cuisines?.join(", ")} - {costForTwoMessage}
-            </p>
+            <p>{cuisines?.join(", ")} - {costForTwoMessage}</p>
             <h2>Menu</h2>
             <ul>
                 {itemCards.map((item) => (
                     <li key={item.card.info.id}>
-                        {item.card.info.name} -{" Rs."}
-                        {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
+                        {item.card.info.name} - Rs.{item.card.info.price / 100 || item.card.info.defaultPrice / 100}
                     </li>
                 ))}
             </ul>

@@ -15,7 +15,7 @@ const Body = () => {
     }, []);
 
     const fetchData = async () => {
-            const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.079100&lng=70.140152&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+            const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.075297&lng=70.133673");
             const json = await data.json();
             setListOfRestauants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
             setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
