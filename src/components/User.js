@@ -14,7 +14,6 @@ const User = () => {
     const getUserinfo = async () => {
         const data = await fetch("https://api.github.com/users/mukulanandtiwari");
         const json = await data.json();
-        console.log(json);
         setUserInfo(json);
     }
 

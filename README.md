@@ -39,3 +39,11 @@ and arrange components as per file to folder.
 
 8. useParams: agar aap ek dynamic route banate ho, jisme kuch IDs ya slugs URL ka part hoti hain (e.g., /user/:id), toh useParams se aap directly URL mein diye gaye id ko access kar sakte ho.
 
+9. Optimising our app.js (for bundling all components) also you can split each bundle for different usage like as per usage of Filter button, About..., 
+  - Chunking
+  - Code Splitting
+  - Dynamic Bundling
+  - lazy loading
+  - on-demand loading
+
+10. In this we use { lazy, Suspense } named import for render component when it gets clicked ( About, Grocery).
