@@ -13,7 +13,7 @@ const About = () => {
                     )}
                 </UserContext.Consumer>
             </div>
-            <p>This is the provider page</p>
+            <h2>This is the provider page</h2>
             <User />
         </div>
     )

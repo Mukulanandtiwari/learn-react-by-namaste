@@ -53,3 +53,29 @@ Material UI
 Bootstrap
 Ant Design
 Chakra UI
+
+12.  # Redux Toolkit
+  - Install @reduxjs/toolkit and react-redux
+  - Build our store
+  - Connect our store to our app
+  - Slice (cartSlice)
+  - dispatch(action)
+  - Selector
+
+* ButtonClicked => Action(dispatch) => calls a reducer function() => Selector(subscribing to the store) => modify the UI
+
+# Main concepts:
+
+1. configureStore:  Redux store easily configure kar sakte ho. It has default setting Redux DevTools aur middleware automatically added.
+
+2. createSlice: Ye ek important function hai jo aapko reducer aur action creators ek hi jagah define karne ki facility deta hai. Pehle aapko alag se reducers aur actions likhne padte the, lekin ab ek hi slice mein aap sab kuch likh sakte ho.
+
+3. createAsyncThunk: Agar aapko asynchronous logic handle karna hai jaise API calls, toh ye function kaam aata hai. Isse async actions easily likhe ja sakte hain.
+
+4. createReducer & createAction: Ye functions aapko reducers aur actions create karne ka easy tarika provide karte hain, without the manual work of writing switch cases for each action.
+
+5. combineSlices:
+
+6. createAsyncThunk:
+
+7. createEntityAdapter:

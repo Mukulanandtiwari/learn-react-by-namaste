@@ -373,3 +373,43 @@ body {
 .user-card button:hover {
     background-color: #45a049;
 }
+
+
+/*************************************************/
+
+/* Cart.css */
+.cart-container {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .cart-heading {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .cart-content {
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  .clear-cart-button {
+    padding: 10px;
+    margin: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .clear-cart-button:hover {
+    background-color: darkgray;
+  }
+  
+  .empty-cart-message {
+    font-size: 18px;
+    color: gray;
+  }
+  
