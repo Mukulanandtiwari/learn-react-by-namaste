@@ -19,12 +19,20 @@ const Body = () => {
     }, []);
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.075297&lng=70.133673&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-        const json = await data?.json();
-        console.log(json);
-        setListOfRestauants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
-        setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
+        try {
+            const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.075297&lng=70.133673&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+            if (!data.ok) {
+                throw new Error(`HTTP error! status: ${data.status}`);
+            }
+            const json = await data.json();
+            console.log(json);
+            setListOfRestauants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
+            setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
+        } catch (error) {
+            console.error("Failed to fetch data: ", error);
+        }
     };
+    
 
     const onlineStatus = useOnlineStatus();
     if (onlineStatus === false) {
@@ -44,6 +52,7 @@ const Body = () => {
             <div className="search">
                 <input
                     type="text"
+                    data-testid="searchInput"
                     className="search-box"
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}

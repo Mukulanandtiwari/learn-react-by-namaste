@@ -2,18 +2,18 @@ import { act, fireEvent, render, screen } from "@testing-library/react";
 import RestaurantMenu from "../RestaurantMenu";
 import Header from "../Header";
 import Cart from "../Cart";
-import MOCK_DATA_NAME from "../mocks/mockResMenu.json";
+// import MOCK_DATA_NAME from "../mocks/mockResMenu.json";
 import { Provider } from "react-redux";
 import appStore from "../../utils/appStore";
 import { BrowserRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
 
 // Mock global fetch
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () => Promise.resolve(MOCK_DATA_NAME),
-  })
-);
+// global.fetch = jest.fn(() =>
+//   Promise.resolve({
+//     json: () => Promise.resolve(MOCK_DATA_NAME),
+//   })
+// );
 
 it("should Load Restaurant Menu Component", async () => {
   await act(async () => {
@@ -30,9 +30,9 @@ it("should Load Restaurant Menu Component", async () => {
   });
 
   // Dynamically fetch the category name and count from mock data
-  const firstCategory = MOCK_DATA_NAME.menu.categories?.[0]?.category || "No Category";
-  const itemsCount = MOCK_DATA_NAME.menu.items?.length || 0;
-  const categoryLabel = `${firstCategory} (${itemsCount})`;
+  // const firstCategory = MOCK_DATA_NAME.menu.categories[0]?.category;
+  // const itemsCount = MOCK_DATA_NAME.menu.items.length;
+  // const categoryLabel = `${firstCategory} (${itemsCount})`;
 
   // Wait for the accordion header to be loaded dynamically
   const accordionHeader = await screen.findByText(categoryLabel);

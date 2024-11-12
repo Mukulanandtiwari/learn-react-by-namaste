@@ -66,16 +66,53 @@ Chakra UI
 
 # Main concepts:
 
-1. configureStore:  Redux store easily configure kar sakte ho. It has default setting Redux DevTools aur middleware automatically added.
+  - configureStore:  Redux store easily configure kar sakte ho. It has default setting Redux DevTools aur middleware automatically added.
 
-2. createSlice: Ye ek important function hai jo aapko reducer aur action creators ek hi jagah define karne ki facility deta hai. Pehle aapko alag se reducers aur actions likhne padte the, lekin ab ek hi slice mein aap sab kuch likh sakte ho.
+  - createSlice: Ye ek important function hai jo aapko reducer aur action creators ek hi jagah define karne ki facility deta hai. Pehle aapko alag se reducers aur actions likhne padte the, lekin ab ek hi slice mein aap sab kuch likh sakte ho.
 
-3. createAsyncThunk: Agar aapko asynchronous logic handle karna hai jaise API calls, toh ye function kaam aata hai. Isse async actions easily likhe ja sakte hain.
+  - createAsyncThunk: Agar aapko asynchronous logic handle karna hai jaise API calls, toh ye function kaam aata hai. Isse async actions easily likhe ja sakte hain.
 
-4. createReducer & createAction: Ye functions aapko reducers aur actions create karne ka easy tarika provide karte hain, without the manual work of writing switch cases for each action.
+  - createReducer & createAction: Ye functions aapko reducers aur actions create karne ka easy tarika provide karte hain, without the manual work of writing switch cases for each action.
 
-5. combineSlices:
+  - combineSlices:
 
-6. createAsyncThunk:
+  - createAsyncThunk:
 
-7. createEntityAdapter:
+  - createEntityAdapter:
+
+13. # Types of testing (devloper)
+
+| Testing Type        | Focus                                         | Scope                     | Tools                    |
+|---------------------|-----------------------------------------------|---------------------------|--------------------------|
+| **Unit Testing**     | Individual functions/methods                  | Smallest unit of code      | Jest for Js        |
+| **Integration Testing** | Interaction between different units/modules | Modules combined together  | Mocha for Js             |
+| **E2E Testing**      | Entire user journey and system behavior       | Full system test           | Cypress, Selenium, Playwright         |
+
+
+ | Feature/Tool      | **Cypress**            | **Selenium**            | **Playwright**            |
+|-------------------|------------------------|-------------------------|---------------------------|
+| **Language Support** | Only JavaScript/Node.js | Multi-language (JS, Java, Python, etc.) | JavaScript/Node.js         |
+| **Cross-Browser**  | Limited (Chrome, Edge) | Full (Chrome, Firefox, Safari, IE) | Full (Chrome, Firefox, WebKit, Edge) |
+| **Speed**         | Fast (direct browser control) | Slower (depending on setup) | Fast (headless, multiple contexts)   |
+| **Advanced Features** | Auto-waiting, good debugging | Cross-browser flexibility, Selenium Grid | Cross-browser, network control, headless testing |
+| **Best For**      | JavaScript developers, fast front-end testing | Complex cross-browser environments | Cross-browser, modern web apps, advanced control |
+
+14. # Different testing libraries:
+
+  - Jest + React Testing Library: The most common combination for unit and integration testing in React.
+  - Cypress and Playwright: Primarily used for E2E testing, simulating real user interaction.
+  - Enzyme: Still in use but less preferred now, replaced by React Testing Library.
+  - Mocha + Chai: A flexible option for those who want custom configurations.
+  - Storybook: Great for visual testing and component-driven development.
+
+15. # Setting up Testing in our app
+ - Install React Testing Library
+ - Installed jest
+ - Installed Babel dependencies
+ - Configure Babel 
+ - Configure Parcel Config file to disable default babel transpilation 
+ - Jest : npx jest --init
+ - Install jsdom library
+ - Install @babel/preset-react - to make JSX work in test cases
+ - Include @babel/preset-react inside my babel config
+ - npm i -D @testing-library/jest-doms
