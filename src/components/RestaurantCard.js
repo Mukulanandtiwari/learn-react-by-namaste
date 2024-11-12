@@ -18,16 +18,16 @@ const RestaurantCard = (props) => {
     } = resData?.info;
 
     return (
-        <div data-testid="resCard" className="res-card">
-            <img className="res-logo" src={CDN_URL + cloudinaryImageId} alt="res-logo" />
-            <h3>{name}</h3>
-            <h4>{cuisines.join(", ")}</h4>
-            <h4>{locality}</h4>
-            <h4>{areaName}</h4>
-            <h4>{costForTwo / 100} for two</h4>
-            <h4>{avgRating} stars</h4>
-            <h4>{deliveryTime} minutes</h4>
-            <h4>User: {loggedInUser}</h4>
+        <div data-testid="resCard" className="w-64 p-4 bg-white rounded-xl shadow-md text-center transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
+            <img className="w-24 h-24 mb-3 rounded-lg object-cover" src={CDN_URL + cloudinaryImageId} alt="res-logo" />
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">{name}</h3>
+            <h4 className="text-sm text-gray-600 mb-1">{cuisines.join(", ")}</h4>
+            <h4 className="text-sm text-gray-600">{locality}</h4>
+            <h4 className="text-sm text-gray-600">{areaName}</h4>
+            <h4 className="text-sm text-gray-600">{costForTwo / 100} for two</h4>
+            <h4 className="text-sm text-gray-600">{avgRating} stars</h4>
+            <h4 className="text-sm text-gray-600">{deliveryTime} minutes</h4>
+            <h4 className="text-sm text-gray-600">User: {loggedInUser}</h4>
         </div>
     )
 };

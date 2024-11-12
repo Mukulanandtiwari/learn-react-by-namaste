@@ -1,73 +1,54 @@
-import { act, fireEvent, render, screen } from "@testing-library/react";
-import RestaurantMenu from "../RestaurantMenu";
-import Header from "../Header";
-import Cart from "../Cart";
-import MOCK_DATA_NAME from "../mocks/mockResMenu.json";
-import { Provider } from "react-redux";
-import appStore from "../../utils/appStore";
-import { BrowserRouter } from "react-router-dom";
-import "@testing-library/jest-dom";
+import Shimmer from "./Shimmer";
+import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
-// Mock global fetch
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () => Promise.resolve(MOCK_DATA_NAME),
-  })
-);
+const RestaurantMenu = () => {
 
-it("should Load Restaurant Menu Component", async () => {
-  await act(async () => {
-    // Render the components wrapped in Provider and BrowserRouter
-    render(
-      <BrowserRouter>
-        <Provider store={appStore}>
-          <Header />
-          <RestaurantMenu />
-          <Cart />
-        </Provider>
-      </BrowserRouter>
+    const { resId } = useParams();
+    const dummy = "Dummy Data";
+    const resInfo = useRestaurantMenu(resId); // Custom hook to fetch restaurant menu data
+    const [showIndex, setShowIndex] = useState(null);
+
+    if (resInfo === null) {
+        return <Shimmer />;
+    }
+
+    const { name, cuisines, costForTwoMessage } = resInfo?.cards?.[2]?.card?.card?.info || {};
+
+    const itemCards = resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card?.card?.itemCards || [];
+
+    const categories = resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+    // console.log(categories);
+
+    // If itemCards is still undefined or empty, handle that case
+    if (itemCards.length === 0) {
+        return (
+            <div className="menu">
+                <h1>{name}</h1>
+                <p>{cuisines?.join(", ")} - {costForTwoMessage}</p>
+                <h2>No menu items available</h2>
+            </div>
+        );
+    }
+
+    return (
+        <div className="menu">
+            <h1>{name}</h1>
+            <p>{cuisines?.join(", ")} - {costForTwoMessage}</p>
+            {/* categories accordions */}
+            {categories.map((category, index) => (
+                <RestaurantCategory
+                    key={category?.card?.card.title}
+                    data={category?.card?.card}
+                    showItems={index === showIndex ? true : false}
+                    setShowIndex={() => setShowIndex(index)}
+                    dummy={dummy}
+                />
+            ))}
+        </div>
     );
-  });
+};
 
-  // Dynamically fetch the category name and count from mock data
-  const firstCategory = MOCK_DATA_NAME.menu.categories?.[0]?.category || "No Category";
-  const itemsCount = MOCK_DATA_NAME.menu.items?.length || 0;
-  const categoryLabel = `${firstCategory} (${itemsCount})`;
-
-  // Wait for the accordion header to be loaded dynamically
-  const accordionHeader = await screen.findByText(categoryLabel);
-
-  // Simulate clicking on the accordion to open the menu section
-  fireEvent.click(accordionHeader);
-
-  // Check that 5 food items are loaded (initial load)
-  expect(screen.getAllByTestId("foodItems").length).toBe(5);
-
-  // Check that the cart is initially empty
-  expect(screen.getByText("Cart - (0 items)")).toBeInTheDocument();
-
-  // Find and click the "Add +" buttons for adding items to the cart
-  const addBtns = screen.getAllByRole("button", { name: "Add +" });
-  fireEvent.click(addBtns[0]);
-
-  // Assert that the cart updates with 1 item
-  expect(screen.getByText("Cart - (1 items)")).toBeInTheDocument();
-
-  // Add another item to the cart
-  fireEvent.click(addBtns[1]);
-
-  // Assert that the cart updates with 2 items
-  expect(screen.getByText("Cart - (2 items)")).toBeInTheDocument();
-
-  // Assert that 7 food items are now in the menu
-  expect(screen.getAllByTestId("foodItems").length).toBe(7);
-
-  // Simulate clicking the "Clear Cart" button to remove all items from the cart
-  fireEvent.click(screen.getByRole("button", { name: "Clear Cart" }));
-
-  // Check that the number of food items resets back to 5
-  expect(screen.getAllByTestId("foodItems").length).toBe(5);
-
-  // Assert that the cart is now empty
-  expect(screen.getByText("Cart is empty. Add Items to the cart!")).toBeInTheDocument();
-});
+export default RestaurantMenu;

@@ -31,11 +31,15 @@ const Contact = () => {
     };
 
     return (
-        <div className="contact-container">
-            <h2>Contact Us</h2>
-            {isSubmitted && <div className="popup-message">Message Sent!</div>} {/* Pop-up message */}
-            <form className="contact-form" onSubmit={handleSubmit}>
-                <label htmlFor="name">Name:</label>
+        <div className="max-w-lg mx-auto mt-12 p-6 bg-gray-100 rounded-lg shadow-lg">
+            <h2 className="text-center text-2xl font-bold mb-6 text-gray-800">Contact Us</h2>
+            {isSubmitted && (
+                <div className="text-center bg-green-500 text-white py-2 mb-4 rounded-md animate-fade-out">
+                    Message Sent!
+                </div>
+            )} {/* Pop-up message */}
+            <form className="flex flex-col" onSubmit={handleSubmit}>
+                <label htmlFor="name" className="mb-2 font-semibold text-gray-600">Name:</label>
                 <input
                     type="text"
                     id="name"
@@ -43,9 +47,10 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    className="mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
                 />
 
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email" className="mb-2 font-semibold text-gray-600">Email:</label>
                 <input
                     type="email"
                     id="email"
@@ -53,9 +58,10 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    className="mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
                 />
 
-                <label htmlFor="message">Message:</label>
+                <label htmlFor="message" className="mb-2 font-semibold text-gray-600">Message:</label>
                 <textarea
                     id="message"
                     name="message"
@@ -63,9 +69,15 @@ const Contact = () => {
                     onChange={handleChange}
                     rows="4"
                     required
+                    className="mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
                 ></textarea>
 
-                <button type="submit">Send Message</button>
+                <button
+                    type="submit"
+                    className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300"
+                >
+                    Send Message
+                </button>
             </form>
         </div>
     );

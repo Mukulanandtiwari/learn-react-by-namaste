@@ -32,7 +32,7 @@ const Body = () => {
             console.error("Failed to fetch data: ", error);
         }
     };
-    
+
 
     const onlineStatus = useOnlineStatus();
     if (onlineStatus === false) {
@@ -48,17 +48,17 @@ const Body = () => {
     return listOfRestauants.length === 0 ? (
         <Shimmer />
     ) : (
-        <div className="body">
-            <div className="search">
+        <div className="body p-8 bg-gray-50 flex flex-col items-center">
+            <div className="search w-full max-w-[600px] mb-5 p-2 bg-white rounded-md shadow-md text-base flex justify-between">
                 <input
                     type="text"
                     data-testid="searchInput"
-                    className="search-box"
+                    className="w-[80%] border-none p-2 text-base rounded-md"
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
                 />
                 <button
-                    className="search-btn"
+                    className="bg-[#f16522] text-white border-none py-2 px-4 cursor-pointer text-base rounded-md transition-colors duration-300 ease-in-out hover:bg-[#e4561b]"
                     onClick={() => {
                         const filteredRestaurant = listOfRestauants.filter((res) =>
                             res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -69,9 +69,10 @@ const Body = () => {
                     Search
                 </button>
             </div>
-            <div className="filter">
+
+            <div className="filter mb-5">
                 <button
-                    className="filter-btn"
+                    className="bg-teal-700 text-white py-2 px-4 rounded cursor-pointer text-base transition-colors duration-300 ease-in-out hover:bg-teal-800"
                     onClick={() => {
                         const filteredList = listOfRestauants.filter(
                             (res) => res.info.avgRating >= 4
@@ -82,6 +83,7 @@ const Body = () => {
                     Top Rated Restaurants
                 </button>
             </div>
+
             <div className="search m-4 p-4 flex items-center">
                 <label>UserName : </label>
                 <input
@@ -90,14 +92,20 @@ const Body = () => {
                     onChange={(e) => setUserName(e.target.value)}
                 />
             </div>
-            <div className="res-container">
+
+            <div className="res-container flex flex-wrap gap-5 justify-center">
                 {filteredRestaurant.map((restaurant) => (
                     <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
-                        {restaurant.info.promoted ? <RestaurantCardPromoted resData={restaurant} /> : <RestaurantCard resData={restaurant} />}
+                        {restaurant.info.promoted ? (
+                            <RestaurantCardPromoted resData={restaurant} />
+                        ) : (
+                            <RestaurantCard resData={restaurant} />
+                        )}
                     </Link>
                 ))}
             </div>
         </div>
+
     );
 };
 
